@@ -368,10 +368,29 @@ resource "docker_image" "nginx" {
 
 This will return values specific to the Docker container created with Terraform.
 
-Finally, destroy the infrastructure.
+## Destroy the Infrastructure
+
+To destroy infrastructure with Terraform, run the `destroy` command:
 
 ```shell
 $ terraform destroy
+
+## .. Terraform shows a plan before prompting to destroy
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+docker_container.nginx: Destroying... [id=dae349b9c02a6b92b5525fab58bdaac35a0b487e72b7c1f5dba984aa430ef33e]
+docker_container.nginx: Destruction complete after 0s
+docker_image.nginx: Destroying... [id=sha256:9e7e7b26c784556498f584508123ae46da82b4915e262975893be4c8ec8009a5nginx:latest]
+docker_image.nginx: Destruction complete after 0s
+
+Destroy complete! Resources: 2 destroyed.
 ```
 
-Look for a message are the bottom of the output asking for confirmation. Type `yes` and hit ENTER. Terraform will destroy the resources it had created earlier.
+The `destroy` command will first show an execution plan of the proposed changes and prompt you to continue.  Only infrastructure in the current working directory and configuration will be affected.  Review the changes and enter `yes` to continue.  Terraform will proceed to destroy the infrastructure.
+
+For more information, read the [`destroy` command](https://developer.hashicorp.com/terraform/cli/commands/destroy) documentation.
