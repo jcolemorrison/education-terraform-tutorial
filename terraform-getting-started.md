@@ -394,3 +394,13 @@ Destroy complete! Resources: 2 destroyed.
 The `destroy` command will first show an execution plan of the proposed changes and prompt you to continue.  Only infrastructure in the current working directory and configuration will be affected.  Review the changes and enter `yes` to continue.  Terraform will proceed to destroy the infrastructure.
 
 For more information, read the [`destroy` command](https://developer.hashicorp.com/terraform/cli/commands/destroy) documentation.
+
+## Next Steps
+
+This tutorial showed the steps to getting started with Terraform.  Though there is much more to managing infrastructure with this product, the steps and concepts you have learned by completing this tutorial are a core component of every Terraform workflow.  If you are  interested in learning more about Terraform, check out more of our resources on the [Developer Platform](https://developer.hashicorp.com/terraform).
+
+Learn how to create real world infrastructure in the following tutorials:
+
+- [Amazon Web Services (AWS)](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build)
+- [Azure](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/azure-build)
+- [Google Cloud Platform (GCP)](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build)
