@@ -114,8 +114,8 @@ resource "docker_container" "nginx" {
 
 This configuration specifies two resources:
 
-1. `docker_image` specifies an Nginx docker image with the "latest" tag.  Because no additional settings were passed to the docker `provider`, docker will pull the image from Docker Hub.
-2. `docker_container` defines the arguments that the container uses including image created from the `docker_image` resource.
+1. `docker_image` specifies an Nginx Docker image with the "latest" tag.  Because the `docker` provider did not specify additional arguments, Docker will pull the image from DockerHub.
+2. `docker_container` defines a Docker container named `training` that uses the image created by the `docker_image` resource.
 
 For more information, read the [Resources](https://developer.hashicorp.com/terraform/language/resources) and [Docker provider](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs) documentation.
 
