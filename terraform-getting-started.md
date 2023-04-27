@@ -19,7 +19,7 @@ Create a new directory on your local machine for Terraform configuration:
 $ mkdir terraform-demo && cd terraform-demo
 ```
 
-You will only affect configuration within the directory where you run Terraform commands.  This is the main working directory of your Terraform project is the [root module](https://developer.hashicorp.com/terraform/language/modules#the-root-module).
+This is the main working directory for your Terraform project is also known as the [root module](https://developer.hashicorp.com/terraform/language/modules#the-root-module).
 
 ## Create the Configuration File
 
