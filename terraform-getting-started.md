@@ -29,7 +29,7 @@ Next, create a file for your Terraform configuration:
 $ touch main.tf
 ```
 
-You can structure Terraform modules and configuration files in a variety of ways.  For more information on best practices, read our documentation on [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure).
+You can structure Terraform modules and configuration files in a variety of ways.  For more information on best practices, read our documentation on [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure). 
 
 ## Write the Configuration
 
@@ -62,7 +62,7 @@ resource "docker_container" "nginx" {
 }
 ```
 
-You define Terraform configuration using the [HashiCorp Configuration Language (HCL) syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration). Each stanza in the example configuration (`terraform`, `resource` and `provider`) represent [blocks](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).  Each block contain [arguments](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) that configure the respective block.
+You define Terraform configuration using the [HashiCorp Configuration Language (HCL) syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration). Each stanza in the example configuration (`terraform`, `resource` and `provider`) represent [blocks](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks). Each block contain [arguments](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) that configure the respective block.
 
 ### Terraform Block
 
@@ -91,11 +91,11 @@ provider "docker" {
 }
 ```
 
-For more information, read the [Providers](https://developer.hashicorp.com/terraform/language/providers) documentation. Visit our [Terraform Registry](https://registry.terraform.io/browse/providers) for a full list of Terraform providers.
+For more information, read the [Providers](https://developer.hashicorp.com/terraform/language/providers) documentation. Visit the [Terraform Registry](https://registry.terraform.io/browse/providers) for a full list of Terraform providers.
 
 ### Resource Block
 
-Use `resource` blocks to describe infrastructure components made available for management through providers specified in your `terraform` block.  The resources you create are dependent upon which providers you have installed.
+The `resource` blocks describe infrastructure components made available for management through providers specified in your `terraform` block. The resources you create depend upon the providers you have installed.
 
 ```hcl
 resource "docker_image" "nginx" {
@@ -112,12 +112,13 @@ resource "docker_container" "nginx" {
 }
 ```
 
-In this configuration we specify two resources:
+This configuration specifies two resources:
 
 1. `docker_image` specifies an Nginx docker image with the "latest" tag.  Because no additional settings were passed to the docker `provider`, docker will pull the image from Docker Hub.
 2. `docker_container` defines the arguments that the container uses including image created from the `docker_image` resource.
 
 For more information, read the [Resources](https://developer.hashicorp.com/terraform/language/resources) and [Docker provider](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs) documentation.
+
 
 ## Initialize the Working Directory
 
@@ -155,7 +156,7 @@ commands will detect it and remind you to do so if necessary.
 
 The `init` command downloads and installs any specified providers and stores them in a hidden `.terraform` directory.  Terraform also creates a dependency lock file called `.terraform.lock.hcl` which stores versioning information about provider dependencies.  
 
-For more information, read the [Dependency Lock Files](https://developer.hashicorp.com/terraform/language/files/dependency-lock) documentation.
+For more information, read the [Dependency Lock Files](https://developer.hashicorp.com/terraform/language/files/dependency-lock) documentation. 
 
 ## Preview Infrastructure Creation
 
