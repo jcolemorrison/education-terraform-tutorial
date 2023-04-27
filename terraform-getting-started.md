@@ -31,7 +31,9 @@ $ touch main.tf
 
 You can structure Terraform modules and configuration files in a variety of ways.  For more information on best practices, read our documentation on [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure).
 
-Paste the following lines into the file.
+## Write the Configuration
+
+Paste the following lines into your `main.tf` file:
 
 ```hcl
 terraform {
@@ -41,21 +43,26 @@ terraform {
     }
   }
 }
+
 provider "docker" {
     host = "unix:///var/run/docker.sock"
 }
+
+resource "docker_image" "nginx" {
+  name = "nginx:latest"
+}
+
 resource "docker_container" "nginx" {
-  image = docker_image.nginx.latest
+  image = docker_image.nginx.image_id
   name  = "training"
   ports {
     internal = 80
     external = 80
   }
 }
-resource "docker_image" "nginx" {
-  name = "nginx:latest"
-}
 ```
+
+You define Terraform configuration using the [HashiCorp Configuration Language (HCL) syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration). Each stanza in the example configuration (`terraform`, `resource` and `provider`) represent [blocks](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).  Each block contain [arguments](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) that configure the respective block.
 
 Initialize Terraform with the `init` command. The AWS provider will be installed. 
 
