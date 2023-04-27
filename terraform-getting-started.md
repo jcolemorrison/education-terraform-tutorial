@@ -64,6 +64,61 @@ resource "docker_container" "nginx" {
 
 You define Terraform configuration using the [HashiCorp Configuration Language (HCL) syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration). Each stanza in the example configuration (`terraform`, `resource` and `provider`) represent [blocks](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).  Each block contain [arguments](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) that configure the respective block.
 
+### Terraform Block
+
+The `terraform` block configures Terraform's settings, which lets you specify the Terraform version, required providers, backends, and more. The following configuration tells Terraform to use the `docker` provider.
+
+```hcl
+terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+    }
+  }
+}
+```
+
+For more information, read the [Terraform Settings](https://developer.hashicorp.com/terraform/language/settings) documentation.
+
+
+### Provider Block
+
+The `provider` block configures the provider. This often includes authentication information that lets the provider interact with the underlying cloud and SaaS provider APIs. The following configuration configures the `docker` provider so Terraform can interact with your local Docker installation.
+
+```hcl
+provider "docker" {
+    host = "unix:///var/run/docker.sock"
+}
+```
+
+For more information, read the [Providers](https://developer.hashicorp.com/terraform/language/providers) documentation. Visit our [Terraform Registry](https://registry.terraform.io/browse/providers) for a full list of Terraform providers.
+
+### Resource Block
+
+Use `resource` blocks to describe infrastructure components made available for management through providers specified in your `terraform` block.  The resources you create are dependent upon which providers you have installed.
+
+```hcl
+resource "docker_image" "nginx" {
+  name = "nginx:latest"
+}
+
+resource "docker_container" "nginx" {
+  image = docker_image.nginx.image_id
+  name  = "training"
+  ports {
+    internal = 80
+    external = 80
+  }
+}
+```
+
+In this configuration we specify two resources:
+
+1. `docker_image` specifies an Nginx docker image with the "latest" tag.  Because no additional settings were passed to the docker `provider`, docker will pull the image from Docker Hub.
+2. `docker_container` defines the arguments that the container uses including image created from the `docker_image` resource.
+
+For more information, read the [Resources](https://developer.hashicorp.com/terraform/language/resources) and [Docker provider](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs) documentation.
+
 Initialize Terraform with the `init` command. The AWS provider will be installed. 
 
 ```shell
