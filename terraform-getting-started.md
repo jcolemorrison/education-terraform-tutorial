@@ -240,11 +240,34 @@ The `plan` command creates an execution plan that allows you to preview what Ter
 
 For more information, read the [`plan` command](https://developer.hashicorp.com/terraform/cli/commands/plan) documentation.
 
+## Apply Configuration and Create Infrastructure
+
+To create the infrastructure defined in the Terraform configuration, run the `apply` command:
+
 ```shell
 $ terraform apply
+
+## .. Terraform shows a plan before prompting to apply
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+docker_image.nginx: Creating...
+docker_image.nginx: Creation complete after 8s [id=sha256:9e7e7b26c784556498f584508123ae46da82b4915e262975893be4c8ec8009a5nginx:latest]
+docker_container.nginx: Creating...
+docker_container.nginx: Creation complete after 1s [id=dae349b9c02a6b92b5525fab58bdaac35a0b487e72b7c1f5dba984aa430ef33e]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
-The command will take up to a few minutes to run and will display a message indicating that the resource was created.
+The `apply` command shows you a list of proposed changes (equivalent to `plan`) and prompts you to confirm the run.  Type `yes` to confirm the plan and continue with the creation of infrastructure.
+
+The command can take up to a few minutes to run and will display a message indicating that the resource was created.
+
+For more information, read the [`apply` command](https://developer.hashicorp.com/terraform/cli/commands/apply) documentation.
 
 Finally, destroy the infrastructure.
 
