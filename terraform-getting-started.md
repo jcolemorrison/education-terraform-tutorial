@@ -269,6 +269,21 @@ The command can take up to a few minutes to run and will display a message indic
 
 For more information, read the [`apply` command](https://developer.hashicorp.com/terraform/cli/commands/apply) documentation.
 
+## Confirm Infrastructure Creation
+
+To confirm the changes created by Terraform, check for the existence of the docker container:
+
+```shell
+$ docker ps
+```
+
+This should return a container named `training` that uses the `nginx:latest` image:
+
+```shell
+CONTAINER ID   IMAGE          COMMAND                  CREATED       STATUS       PORTS                NAMES
+6a7897392afb   nginx:latest   "/docker-entrypoint.…"   2 hours ago   Up 2 hours   0.0.0.0:80->80/tcp   training
+```
+
 Finally, destroy the infrastructure.
 
 ```shell
