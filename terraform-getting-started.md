@@ -11,12 +11,15 @@ This tutorial assumes that you have the following:
 
 You can find complete instructions on installing both of the above in the [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) tutorial.
 
-Most guys find it easiest to create a new directory on there local machine and create Terraform configuration code inside it.
+## Create the Project Directory
+
+Create a new directory on your local machine for Terraform configuration:  
 
 ```shell
-$ mkdir terraform-demo
-$ cd terraform-demo
+$ mkdir terraform-demo && cd terraform-demo
 ```
+
+You will only affect configuration within the directory where you run Terraform commands.  This is the main working directory of your Terraform project is the [root module](https://developer.hashicorp.com/terraform/language/modules#the-root-module).
 
 Next, create a file for your Terraform configuration code.
 
