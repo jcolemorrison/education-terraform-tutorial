@@ -157,7 +157,88 @@ The `init` command downloads and installs any specified providers and stores the
 
 For more information, read the [Dependency Lock Files](https://developer.hashicorp.com/terraform/language/files/dependency-lock) documentation.
 
-You shoud check for any errors. If it ran successfully, provision the resource with the `apply` command.
+## Preview Infrastructure Creation
+
+To preview what changes Terraform will make to your infrastructure, run the `plan` command:
+
+```shell
+$ terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # docker_container.nginx will be created
+  + resource "docker_container" "nginx" {
+      + attach                                      = false
+      + bridge                                      = (known after apply)
+      + command                                     = (known after apply)
+      + container_logs                              = (known after apply)
+      + container_read_refresh_timeout_milliseconds = 15000
+      + entrypoint                                  = (known after apply)
+      + env                                         = (known after apply)
+      + exit_code                                   = (known after apply)
+      + hostname                                    = (known after apply)
+      + id                                          = (known after apply)
+      + image                                       = "nginx:latest"
+      + init                                        = (known after apply)
+      + ipc_mode                                    = (known after apply)
+      + log_driver                                  = (known after apply)
+      + logs                                        = false
+      + must_run                                    = true
+      + name                                        = "training"
+      + network_data                                = (known after apply)
+      + read_only                                   = false
+      + remove_volumes                              = true
+      + restart                                     = "no"
+      + rm                                          = false
+      + runtime                                     = (known after apply)
+      + security_opts                               = (known after apply)
+      + shm_size                                    = (known after apply)
+      + start                                       = true
+      + stdin_open                                  = false
+      + stop_signal                                 = (known after apply)
+      + stop_timeout                                = (known after apply)
+      + tty                                         = false
+      + wait                                        = false
+      + wait_timeout                                = 60
+
+      + healthcheck {
+          + interval     = (known after apply)
+          + retries      = (known after apply)
+          + start_period = (known after apply)
+          + test         = (known after apply)
+          + timeout      = (known after apply)
+        }
+
+      + labels {
+          + label = (known after apply)
+          + value = (known after apply)
+        }
+
+      + ports {
+          + external = 80
+          + internal = 80
+          + ip       = "0.0.0.0"
+          + protocol = "tcp"
+        }
+    }
+
+  # docker_image.nginx will be created
+  + resource "docker_image" "nginx" {
+      + id          = (known after apply)
+      + image_id    = (known after apply)
+      + name        = "nginx:latest"
+      + repo_digest = (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+```
+
+The `plan` command creates an execution plan that allows you to preview what Terraform will do.
+
+For more information, read the [`plan` command](https://developer.hashicorp.com/terraform/cli/commands/plan) documentation.
 
 ```shell
 $ terraform apply
