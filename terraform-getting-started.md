@@ -21,11 +21,15 @@ $ mkdir terraform-demo && cd terraform-demo
 
 You will only affect configuration within the directory where you run Terraform commands.  This is the main working directory of your Terraform project is the [root module](https://developer.hashicorp.com/terraform/language/modules#the-root-module).
 
-Next, create a file for your Terraform configuration code.
+## Create the Configuration File
+
+Next, create a file for your Terraform configuration:
 
 ```shell
 $ touch main.tf
 ```
+
+You can structure Terraform modules and configuration files in a variety of ways.  For more information on best practices, read our documentation on [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure).
 
 Paste the following lines into the file.
 
